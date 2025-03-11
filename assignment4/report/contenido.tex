@@ -1,0 +1,119 @@
+\textcolor{BrickRed}{\bf NOTA:}  Los ejercicios se encuentran repartidos en los archivos:
+\begin{itemize}
+	\item \textcolor{mediumblue}{QR\_iteration.py}
+	\item \textcolor{mediumblue}{ejercicio2\_tarea4.py}
+\end{itemize}
+
+% -----------------------------------------------------------------------------------------
+\vspace{5mm}
+{\color{lightgray} \hrule}
+\begin{enumerate}
+	\item Dado el siguiente:\\
+	\textit{Teorema (Gershgorin):}\\
+	\textit{Dada una matriz $A=a_{ij}$ de $m\times m$, cada eigenvalor de $A$ está en al menos uno de los discos en el plano complejo con centro en $a_{ii}$ y radio $\sum_{j\neq i} \left|a_{ij}\right|$. Además, si $n$ de estos discos forman un dominio conexo, disjunto de los otros $n-m$ discos, entonces hay exactamente $n$ eigenvalores en ese dominio.}
+	
+	Deduce estimaciones de los eigenvalores de
+	\begin{equation} \label{eq:1}
+		\begin{pmatrix}
+			8 & 1 & 0\\
+			1 & 4 & \varepsilon\\
+			0 & \varepsilon & 1
+		\end{pmatrix}
+	\end{equation}
+	con $\left|\varepsilon\right| \leq 1$.
+	
+\end{enumerate}
+
+\textcolor{BrickRed}{\it Respuesta:}
+
+Consideremos los discos de Gershgorin:
+\begin{equation} \label{eq:2}
+	R_{i} = \left\{z\in \mathbb{C} : \left| z - a_{ii} \right| \leq \sum_{j\neq i} \left|a_{ij}\right| \right\}
+\end{equation}
+
+En particular, como la matriz \eqref{eq:1} es simétrica y diagonal dominante, es definida positiva. Con esto, se garantiza que los eigenvalores son reales positivos (se encuentran sobre la recta real).
+
+Por el Teorema de Gershgorin, se sabe que los valores propios de \eqref{eq:1} se encuentran en los discos:
+\begin{itemize}
+	\item $R_{1} = \{\left|\lambda-8\right| \leq 1\}$
+	\item $R_{2} = \{\left|\lambda-4\right| \leq 1+\left| \varepsilon\right| \}$
+	\item $R_{3} = \{\left|\lambda-1\right| \leq \left|\varepsilon\right|\}$
+\end{itemize}
+
+Notemos primero que $R_{1}$ nunca tiene intersección con los otros dos círculos para ningún valor de $\left|\varepsilon\right| \leq 1$. El radio mayor para $R_2$ y $R_3$ se da cuando $\left|\varepsilon\right| = 1$ y en este caso, tampoco existe intersección entre los círculos. Por lo que para ningún valor de $\left|\varepsilon\right| \leq 1$, existe intersección entre los círculos de Gershgorin y se garantiza que, al ser una matriz de $3\times3$, hay un eigenvalor en cada círculo debido a que cada uno de estos es un dominio conexo, disjunto de los demás (por el Teorema de Gershgorin).
+
+En particular, si $\varepsilon=0$, se puede garantizar que $\lambda_3=1$ es un eigenvalor de \eqref{eq:1}. Con esto, la submatriz
+\begin{equation}
+	\begin{pmatrix}
+		8 & 1 \\
+		1 & 4 \\
+	\end{pmatrix}
+\end{equation}
+tiene eigenvalores cercanos a $8$ y $4$ ya que es simétrica y es diagonal dominante. Para ser exactos, el polinomio característico es $(8-\lambda)(4-\lambda) - 1=0$ que tiene como soluciones: $\lambda_1=8.236$ y $\lambda_2=3.764$. Entonces, para la matriz
+	\begin{equation} \label{eq:4}
+	\begin{pmatrix}
+		8 & 1 & 0\\
+		1 & 4 & 0\\
+		0 & 0 & 1
+	\end{pmatrix},
+\end{equation}
+los eigenvalores son exactamente
+\begin{equation} \label{eq:5}
+	\lambda_1=8.236\text{, } \lambda_2=3.764 \text{ y }\lambda_3=1.
+\end{equation}
+
+Con esto, la forma general para cualquier $\left|\varepsilon\right| \leq 1$, \eqref{eq:1}, es una perturbación de \eqref{eq:4}. Dado que $a_{23}=a_{32}=\varepsilon$, se genera un acoplamiento entre las variables en las filas 2 y 3,  lo que hace que los eigenvalores $\lambda_2$ y $\lambda_3$ interactúen entre sí, esto provoca que estos eigenvalores varíen más a medida que $\left|\varepsilon\right|$ crece, mientras que $\lambda_1$ permanecerá casi sin cambios ya que no está directamente conectado con $\varepsilon$.
+
+En resumen, la teoría de perturbaciones dice que si los eigenvalores de la matriz sin perturbación (es decir, cuando $\varepsilon=0$) están separados lo suficiente, las perturbaciones pequeñas causarán solo pequeños cambios en los eigenvalores. Es decir, los valores dados en \eqref{eq:5} sufrirán pequeños cambios según $\left|\varepsilon\right|$ crece (a excepción de $\lambda_1$, que tendrá cambios casi nulos).
+
+% -----------------------------------------------------------------------------------------
+\vspace{5mm}
+{\color{lightgray} \hrule}
+\begin{enumerate} \setcounter{enumi}{1}
+	\item Implementa la iteración $QR$. Aplícala a la matriz $A$ del Ejercicio 1 con $\varepsilon=10^{-N}$ para $N = 0, 1, 2, 4, 5$. Compara lo obtenido por el algoritmo de Scipy.
+\end{enumerate}
+
+\textcolor{BrickRed}{\it Respuesta:}
+
+En el archivo \textcolor{mediumblue}{QR\_iteration.py}, se define la función \textit{QR\_iteration()} la cual recibe como argumentos a la matriz A de interés, el número máximo de iteraciones (default $= 1000$), la tolerancia para la convergencia y un booleano que indica si se debe sobreescribir la matriz A original. La función devuelve un arreglo con los eigenvalores de la matriz A. Dado que en cada iteración se realiza la factorización $QR$ de la matriz, se hace uso de la función \textit{MODIFIED\_GRAM\_SCHMIDT()}, implementada en las tareas pasadas.
+
+Para el criterio de paro se toman en cuenta las magnitudes de las entradas fuera de la diagonal principal, si son demasiado pequeñas, se termina el algoritmo (se toma un valor default de $10^{-7}$).
+
+Para revisar que la función \textit{QR\_iteration()} funcione correctamente,  se usaron muchos ejemplos prácticos para ver su desempeño. En particular, se adjuntaron $3$ ejemplos en \textcolor{mediumblue}{QR\_iteration.py} en los cuales se puede destacar lo siguiente:
+\begin{itemize}
+	\item Cuando la matriz tiene todos sus eigenvalores reales y distintos, el desempeño de la función \textit{QR\_iteration()} es practicamente el mismo que el de la función \textit{eig()} de Scipy, encontrando rápidamente todos los eigenvalores.
+	\item Cuando la matriz tiene eigenvalores reales pero repetidos, el desempeño de la función \textit{QR\_iteration()} es muy similar al de la función \textit{eig()} de Scipy, ya que en la mayoría de los casos se notó una pequeña variación en los eigenvalores.
+	\item Si la matriz tiene eigenvalores complejos, la función \textit{QR\_iteration()} no es capaz de encontrar la parte compleja del eigenvalor, mientras que \textit{eig()} de Scipy sí los encuentra. Sin embargo, la parte real sí coincide con la esperada.
+\end{itemize}
+Estos resultados no sorprenden, ya que fueron comentados en clase y son los esperados según la parte teórica.
+
+En el archivo \textcolor{mediumblue}{ejercicio2\_tarea4.py()} se realiza la segunda parte del ejercicio: se comparan los resultados obtenidos por la función \textit{QR\_iteration()} con los
+obtenidos por la función \textit{linalg.eig()} de Scipy para la matriz del ejercicio 1 para los diferentes valores de $N$ y $\varepsilon$.
+
+Se observa que los resultados obtenidos por ambas funciones son iguales, debido a que en cada caso, los eigenvalores de las matrices son todos reales positivos (que ya habíamos visto que era definida positiva).
+
+Además, se confirma lo mencionado en el ejercicio 1: a medida que $N$ crece, $\varepsilon$ tiende a $0$, generando que el eigenvalor $\lambda_3$ se acerque a $1$, mientras que los otros se mantienen más cerca de los valores dados en \eqref{eq:5} (a excepción de $\lambda_2$ que varía más su valor cuando $N$ hace la transición de $0$ a $1$). A continuación, se da la tabla de resultados:
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$N$ & $\varepsilon$ & \textbf{Iteración QR} & \textbf{Scipy} \\ \hline
+		0 & 1      & [8.2435, 4.0710, 0.6853] & [8.2435, 4.0710, 0.6853] \\ \hline
+		1 & 0.1    & [8.2361, 3.7673, 0.9965] & [8.2361, 3.7673, 0.9965] \\ \hline
+		2 & 0.01   & [8.2360, 3.7639, 0.9999]   & [8.2360, 3.7639, 0.9999] \\ \hline
+		3 & 0.001  & [8.2360, 3.7639, 0.9999] & [8.2360, 3.7639, 0.9999] \\ \hline
+		4 & 0.0001 & [8.2360, 3.7639, 1.0]        & [8.2360, 3.7639, 1.0] \\ \hline
+		5 & 0.00001  & [8.2360, 3.7639, 1.0]     & [8.2360, 3.7639, 1.0] \\ \hline
+	\end{tabular}
+	\caption{Comparación de eigenvalores entre Iteración QR y Scipy para distintos valores de $N$ y $\varepsilon$.}
+\end{table}
+
+De hecho, a partir de $N=2$, ya no se notan cambios importantes en los eigenvalores de \eqref{eq:1}.
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+% -----------------------------------------------------------------------------------------
+\vspace{5mm}
+{\color{lightgray} \hrule}
+\begin{enumerate}
+	\item a) Definir la cdf inversa generalizada $F_{X}^{-}$ y demostrar que en el caso de variables aleatorias continuas esta coincide con la inversa usual.
+	
+	b) Demostrar además que en general para simular de $X$ podemos simular $u\sim U(0,1)$ y $F_{X}^{-} (u)$ se distribuye como $X$. [1 punto]
+\end{enumerate}
+
+\textcolor{BrickRed}{\it Respuesta:}
+
+{\color{blue}
+	\begin{enumerate}[label=\alph*), start=1]
+		\item  
+\end{enumerate}}
+Sea $X$ una variable aleatoria con función de distribución acumulada (CDF) $F_{X}(x) =  \mathbb{P} \left(X\leq x\right)$, la \textbf{CDF inversa generalizada} $F_{X}^{-} (q)$ se define como:
+\begin{equation}
+	F_{X}^{-} (q) = \inf\left\{ x\in\mathbb{R} : F_{X}(x) \geq q \right\}
+\end{equation}
+para $q \in (0,1)$.
+
+Entonces, si $X$ es una variable aleatoria continua, su CDF $F_{X}(x)$ es una función no decreciente y continua en todo su dominio aunque $F_{X}(x)$ puede ser constante en ciertos intervalos (donde la densidad de probabilidad $f_{X}(x)=0$). Entonces, se tienen dos casos:
+\begin{itemize}
+	\item Cuando $F_{X}(x)$ es estrictamente creciente, para cada $q\in(0,1)$, existe un único $x$ tal que $F_{X}(x)=q$ gracias a que la función es biyectiva (al ser continua y estrictamente creciente). Este $x$ es el único valor que satisface $F_{X}(x)=q$ y por lo tanto, la inversa usual existe, es única y cumple que $F_{X}^{-1}(q)=x$.
+	
+	Además, por la definición de la inversa generalizada, se busca el ínfimo de los valores de $x$ tales que $F_{X}(x)\geq q$. Como $F_{X}(x)$ es estrictamente creciente, este conjunto solo contiene un valor de $x$, que es el que satisface $F_{X}(x)=u$. Esto implica que:
+	\begin{equation}
+		F_{X}^{-}(q) = \inf\left\{ x\in\mathbb{R} : F_{X}(x) \geq q \right\} = F_{X}^{-1}(q).
+	\end{equation}
+	Por lo tanto, cuando $F_{X}(x)$ es estrictamente creciente, la inversa generalizada $F_{X}^{-}(q)$ coincide exactamente con la inversa usual $F_{X}^{-1}(q)$  ya que en ambos casos se obtiene el único valor $x$ que satisface $F_{X}(x) = q$.
+	
+	\item En donde $F_{X}(x)$ es constante, la inversa generalizada sigue siendo válida. La definición de $F_{X}^{-}(q)$ como el ínfimo de los $x$ tales que $F_{X}(x)\geq q$ asegura que siempre obtenemos el valor correcto de $x$, incluso si la CDF no es estrictamente creciente.
+\end{itemize}
+
+\newpage
+{\color{blue}
+	\begin{enumerate}[label=\alph*), start=2]
+		\item  
+\end{enumerate}}
+Sea $u\sim U(0,1)$, queremos probar que $F_{X}^{-}(u)$ se distribuye como $X$, es decir, que
+\begin{equation}
+	\mathbb{P} \left(F_{X}^{-}(u) \leq x\right) = \mathbb{P}\left(X\leq x\right) = F_{X}(x).
+\end{equation}
+
+Por definición de la inversa generalizada, se tiene que $F_{X}^{-}(u) \leq x$ implica que el valor de $u$ debe estar en el rango de valores menores o iguales a  $F_{X}(x)$, es decir, $u\leq F_{X}(x)$. Con esto,
+\begin{equation} \label{eq:4}
+	\mathbb{P} \left(F_{X}^{-}(u) \leq x\right) = \mathbb{P}\left(u\leq F_{X}(x)\right)
+\end{equation}
+
+Finalmente, dado que $u\sim U(0,1)$, se tiene que la probabilidad de que $u\leq a\in[0,1]$ es exactamente $a$. Entonces, $\mathbb{P}\left(u\leq F_{X}(x)\right) = F_{X}(x)$. Sustituyendo esto en \eqref{eq:4}, se tiene que $F_{X}^{-}(u)\sim X$.

@@ -1,0 +1,43 @@
+% ------------------------------------------------------------------------------------
+\newpage
+\section{Ejercicio 3}
+	Investiga y describe muy brevemente los softwares OpenBugs, Nimble, JAGS, DRAM, Rtwalk, Mcee Hammer, PyMCMC.
+
+\vspace{5mm}
+{\color{gray} \hrule}
+\textcolor{BrickRed}{\it Respuesta:}
+
+\begin{itemize}
+	\item \textbf{OpenBugs} (\textit{Bayesian inference Using Gibbs Sampling}) 
+\end{itemize}
+Es un software diseñado para realizar análisis estadístico bayesiano mediante algoritmos MCMC, particularmente Gibbs Sampling. Es ampliamente utilizado para modelar datos complejos y especificar modelos probabilísticos jerárquicos en su propio lenguaje. OpenBUGS es bien conocido en la comunidad estadística y se integra fácilmente con R a través de paquetes como BRugs. Sin embargo, presenta limitaciones en términos de flexibilidad y rendimiento en problemas de gran escala o alta dimensionalidad.
+
+\begin{itemize}
+	\item \textbf{Nimble}
+\end{itemize}
+Es una plataforma en R que permite construir y personalizar modelos estadísticos, especialmente para MCMC y algoritmos jerárquicos bayesianos. Su lenguaje es similar al de BUGS, pero ofrece la capacidad de optimizar y modificar directamente los algoritmos. Es una herramienta flexible y eficiente, ideal para simulaciones y análisis avanzados, aunque su curva de aprendizaje puede ser pronunciada para principiantes.
+
+\begin{itemize}
+	\item \textbf{JAGS} (\textit{Just Another Gibbs Sampler})
+\end{itemize}
+Es una alternativa modular y extensible a OpenBUGS, diseñada para el muestreo MCMC en modelos bayesianos jerárquicos. Compatible con R mediante el paquete rjags, JAGS soporta una amplia variedad de distribuciones y modelos. Ofrece mayor adaptabilidad y modernidad que OpenBUGS, aunque sigue siendo menos flexible que herramientas como Nimble.
+
+\begin{itemize}
+	\item \textbf{DRAM} (\textit{Delayed Rejection Adaptive Metropolis})
+\end{itemize}
+Es una extensión del algoritmo Metropolis-Hastings que combina la adaptabilidad con retraso en el rechazo de propuestas. Esto permite una exploración más efectiva en el espacio de parámetros, especialmente en distribuciones complejas o con correlaciones fuertes. DRAM reduce el tiempo de convergencia en comparación con Metropolis-Hastings estándar, aunque puede ser más costoso computacionalmente.
+
+\begin{itemize}
+	\item \textbf{Rtwalk}
+\end{itemize}
+Es un algoritmo MCMC basado en “random walk” diseñado para explorar eficientemente espacios de alta dimensión. Garantiza irreducibilidad y está optimizado para problemas bayesianos con restricciones o geometrías complejas. Es particularmente eficiente en problemas con muchas dimensiones, pero su uso es menos extendido, lo que limita el soporte comunitario disponible.
+
+\begin{itemize}
+	\item \textbf{Mcee Hammer}
+\end{itemize}
+Es un sampler MCMC especializado inicialmente en problemas de modelado no lineal en astronomía. Utiliza un enfoque de conjunto de puntos (ensemble sampler), como el algoritmo Affine Invariant, para manejar modelos con muchas dimensiones y correlaciones fuertes. Es fácil de usar, ya que no requiere un ajuste detallado de parámetros, y aunque es popular en astronomía, también puede aplicarse en otros campos científicos.
+
+\begin{itemize}
+	\item \textbf{PyMCMC}
+\end{itemize}
+Es una biblioteca en Python para implementar métodos MCMC personalizados, especialmente en inferencia bayesiana. Integra herramientas del ecosistema de Python como NumPy, SciPy y Matplotlib, y permite adaptar los algoritmos de muestreo a necesidades específicas. Su flexibilidad es ideal para usuarios que desean personalizar sus modelos, aunque tiene menos soporte comunitario en comparación con herramientas más maduras como Stan o PyMC.
