@@ -82,7 +82,7 @@ The following section presents a concise overview of each task, highlighting its
   </div>
 
 - **Assignment 6 – MCMC: Metropolis-Hastings**  
-  Simulation of Bernoulli data and posterior inference for the parameter \( p \) using Metropolis-Hastings. Two proposal distributions were implemented: a Beta prior-informed proposal and a truncated Normal centered at the current state. The task includes analysis of irreducibility and ergodicity, along with convergence behavior as sample size increases.
+  Simulation of Bernoulli data and posterior inference for the parameter \( 𝞺 \) using Metropolis-Hastings. Two proposal distributions were implemented: a Beta prior-informed proposal and a truncated Normal centered at the current state. The task includes analysis of irreducibility and ergodicity, along with convergence behavior as sample size increases.
 
   <div align="center">
     <img src="https://github.com/ezautorres/Scientific-Computing-CIMAT/raw/main/assignment6/results/MS_normal.png" alt="Posterior sampling with Metropolis-Hastings" width="500"/>
@@ -105,7 +105,7 @@ The following section presents a concise overview of each task, highlighting its
 ---
 
 - **Final Project – Bayesian Inference for Weibull Parameters**  
-  Full Bayesian treatment of a Weibull likelihood using MCMC. Implements both standard Metropolis-Hastings and adaptive proposals for posterior sampling of \(\alpha\) and \(\lambda\), with convergence diagnostics and posterior summaries for simulated datasets.
+  Full Bayesian treatment of a Weibull likelihood using MCMC. Implements both standard Metropolis-Hastings and adaptive proposals for posterior sampling of \(𝛼\) and \(λ\), with convergence diagnostics and posterior summaries for simulated datasets.
 
   <div align="center">
     <img src="https://github.com/ezautorres/Scientific-Computing-CIMAT/raw/main/final_project/results/trayectory_ex2.png" alt="Trayectory of alpha and lambda for Weibull model" width="500"/>
