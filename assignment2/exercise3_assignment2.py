@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     # Adjust the layout and display the graph.
     plt.tight_layout(rect = [0, 0.03, 1, 0.95])
-    plt.savefig("gram_schmidt.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+    plt.savefig("gram_schmidt.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
     plt.show()
 
     # ----------------------------------------------------------------------------------------------------------

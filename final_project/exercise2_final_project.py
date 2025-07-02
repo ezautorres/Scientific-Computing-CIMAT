@@ -334,5 +334,5 @@ if __name__ == "__main__":
     # Trayectory of the parameters.
     ax = trayectory2d3d(chain = chain, params = ["$a$", "$b$", "$c$"], modes = [a_mode, b_mode, c_mode])
     plt.tight_layout()
-    plt.savefig("trayectory_ex2.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+    plt.savefig("trayectory_ex2.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
     plt.show()

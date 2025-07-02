@@ -57,6 +57,7 @@ def contour_plot(chain: np.ndarray, mu: np.ndarray, Sigma: np.ndarray, ax = None
     ax.set_xlabel('$x_1$.')
     ax.set_ylabel('$x_2$.')
     ax.grid(True)
+
     return ax
 
 # --------------------------------------------------------------------------------------------------------------
@@ -161,6 +162,7 @@ def prop1_gen(x: np.ndarray, mu1: float, mu2: float, sg1: float, sg2: float, rho
     x1, x2 = x                                      # Current values of the chain.
     mean = mu1 + rho * (sg1 / sg2) * (x2 - mu2)     # Mean of the proposal.
     std = sg1 * np.sqrt(1 - rho ** 2)               # Standard deviation of the proposal.
+
     return np.array([stats.norm.rvs(mean,std), x2]) # Equation 5 of the report.
 
 def prop1_pdf(x: np.ndarray, y: np.ndarray, mu1: float, mu2: float, sg1: float, sg2: float, rho: float) -> float:
@@ -177,6 +179,7 @@ def prop1_pdf(x: np.ndarray, y: np.ndarray, mu1: float, mu2: float, sg1: float, 
     y1, y2 = y                                # Proposal.
     mean = mu1 + rho * (sg1 / sg2) * (x2-mu2) # Mean of the proposal.
     std = sg1 * np.sqrt(1 - rho**2)           # Standard deviation of the proposal.
+    
     return stats.norm.pdf(y1, mean, std)      # Probability density of the proposal evaluated in y1.
 
 # Proposal 2 ---------------------------------------------------------------------------------------------------
@@ -193,6 +196,7 @@ def prop2_gen(x: np.ndarray, mu1: float, mu2: float, sg1: float, sg2: float, rho
     x1, x2 = x                                      # Current values of the chain.
     mean = mu2 + rho * (sg2 / sg1) * (x1 - mu1)     # Mean of the proposal.
     std = sg2 * np.sqrt(1 - rho ** 2)               # Standard deviation of the proposal.
+    
     return np.array([x1, stats.norm.rvs(mean,std)]) # Equation 6 of the report.
 
 def prop2_pdf(x: np.ndarray, y: np.ndarray, mu1: float, mu2: float, sg1: float, sg2: float, rho: float) -> float:
@@ -209,6 +213,7 @@ def prop2_pdf(x: np.ndarray, y: np.ndarray, mu1: float, mu2: float, sg1: float, 
     y1, y2 = y                              # Proposal.
     mean = mu2 + rho * (sg2/sg1) * (x1-mu1) # Mean of the proposal.
     std = sg2 * np.sqrt(1 - rho**2)         # Standard deviation of the proposal.
+    
     return stats.norm.pdf(y2, mean, std)    # Probability density of the proposal evaluated in y2.
 
 # --------------------------------------------------------------------------------------------------------------
@@ -245,5 +250,5 @@ if __name__ == "__main__":
         
         # Plot the contours of the density and the evolution of the Markov chain.
         ax = contour_plot(chain, [mu1,mu2], [[sg1**2, rho*sg1*sg2], [rho*sg1*sg2, sg2**2]])
-        plt.savefig(f"p{rho}.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+        plt.savefig(f"p{rho}.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
         plt.show()

@@ -206,5 +206,5 @@ if __name__ == "__main__":
     plt.xlabel(r"$\alpha$")
     plt.ylabel(r"$\beta$")
     plt.title("Simulated Markov Chain for the parameters $\\alpha$ and $\\beta$.")
-    plt.savefig("trayectory_ex1.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+    plt.savefig("trayectory_ex1.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
     plt.show()

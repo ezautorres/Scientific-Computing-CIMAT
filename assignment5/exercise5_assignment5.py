@@ -44,5 +44,5 @@ real_dist = stats.gamma.pdf(x, 2, 0, 1) # PDF of the Gamma(2,1) distribution.
 plt.plot(x, real_dist, 'k', label = r'PDF $Gamma(2,1)$')
 plt.legend() 
 plt.title(r"$Gamma(2,1)$ distribution - ARS vs PDF")
-#plt.savefig("ARS_gamma.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+plt.savefig("ARS_gamma.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
 plt.show()

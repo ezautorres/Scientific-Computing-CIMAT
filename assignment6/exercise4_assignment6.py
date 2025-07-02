@@ -81,5 +81,5 @@ if __name__ == "__main__":
     plt.xlabel("$p$")
     plt.ylabel("Density")
     plt.title("Simulated distributions with Metropolis-Hastings.")
-    plt.savefig("MS_normal.pdf", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500, format = 'pdf', transparent = True)
+    plt.savefig("MS_normal.png", bbox_inches = 'tight', pad_inches = 0.4, dpi = 500)
     plt.show()
