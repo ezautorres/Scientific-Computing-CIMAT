@@ -8,6 +8,22 @@
 
 This repository contains all course assignments and the final project from the graduate-level class *Scientific Computing for Probability, Statistics, and Data Science* at CIMAT (Fall 2024). The course was taught by my thesis advisor and significantly influenced the computational direction of my master's thesis, which focuses on solving inverse problems using Physics-Informed Neural Networks (PINNs).
 
+## 📄 Table of Contents
+
+- [Repository Structure](#repository-structure)
+- [Technical Stack](#technical-stack)
+- [Overview of Assignments](#overview-of-assignments)
+  - [Assignment 1 – LU and Cholesky Decomposition](#assignment-1--lu-and-cholesky-decomposition)
+  - [Assignment 2 – QR Decomposition and Least Squares](#assignment-2--qr-decomposition-and-least-squares)
+  - [Assignment 3 – Numerical Stability](#assignment-3--numerical-stability)
+  - [Assignment 4 – Eigenvalue Computation](#assignment-4--eigenvalue-computation)
+  - [Assignment 5 – Stochastic Simulation](#assignment-5--stochastic-simulation)
+  - [Assignment 6 – MCMC: Metropolis-Hastings](#assignment-6--mcmc-metropolis-hastings)
+  - [Assignment 7 – Metropolis-Hastings in Multivariate Settings](#assignment-7--metropolis-hastings-in-multivariate-settings)
+  - [Assignment 8 – MCMC with Hybrid Kernels and Gibbs Sampling](#assignment-8--mcmc-with-hybrid-kernels-and-gibbs-sampling)
+  - [Final Project – Bayesian Inference for Weibull Parameters](#final-project--bayesian-inference-for-weibull-parameters)
+- [Contact](#-contact)
+
 ---
 
 ## Repository Structure
@@ -22,11 +38,13 @@ Each assignment comprises the following elements:
 
 ## Technical Stack
 
-This project was developed using:
+This project was developed in Python 3.11 using:
 
-- Python 3.11+
-- Key dependencies: `numpy`, `matplotlib`, `scipy`, `pandas`, etc.
-- It is recommended to use a virtual environment.
+- **Core libraries:** `numpy`, `scipy`, `matplotlib`, `pandas`
+- **Symbolic computation:** `sympy`
+- **Statistical modeling & distributions:** `scipy.stats`
+- **Plotting & visualization:** `seaborn`, `matplotlib`
+- **Jupyter Notebooks** (for prototyping)
 
 > Note: Each assignment may include additional libraries specified in the corresponding script headers.
 
@@ -93,6 +111,18 @@ The following section presents a concise overview of each task, highlighting its
     <img src="https://github.com/ezautorres/Scientific-Computing-CIMAT/raw/main/final_project/results/trayectory_ex2.png" alt="Trayectory of alpha and lambda for Weibull model" width="500"/>
   </div>
 ---
+
+## Learning Outcomes
+
+Throughout the course, I gained practical experience in:
+
+- Implementing numerical linear algebra algorithms from scratch
+- Performing polynomial and spline interpolation
+- Solving ordinary differential equations using numerical schemes
+- Designing and evaluating stochastic simulation pipelines (e.g., ARS, MCMC)
+- Analyzing convergence and stability in numerical methods
+- Applying Bayesian inference via MCMC techniques to real data
+- Writing clear scientific reports with integrated visualizations
 
 ## 📫 Contact
 
