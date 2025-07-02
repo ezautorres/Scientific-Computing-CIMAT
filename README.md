@@ -110,6 +110,7 @@ The following section presents a concise overview of each task, highlighting its
   <div align="center">
     <img src="https://github.com/ezautorres/Scientific-Computing-CIMAT/raw/main/final_project/results/trayectory_ex2.png" alt="Trayectory of alpha and lambda for Weibull model" width="500"/>
   </div>
+  
 ---
 
 ## Learning Outcomes
@@ -123,6 +124,8 @@ Throughout the course, I gained practical experience in:
 - Analyzing convergence and stability in numerical methods
 - Applying Bayesian inference via MCMC techniques to real data
 - Writing clear scientific reports with integrated visualizations
+
+---
 
 ## 📫 Contact
 
