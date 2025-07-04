@@ -1,5 +1,12 @@
 # Scientific Computing – CIMAT (Fall 2024)
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange)
+![SciPy](https://img.shields.io/badge/SciPy-✓-darkgreen)
+![MCMC](https://img.shields.io/badge/MCMC-✓-indigo)
+![Bayesian Inference](https://img.shields.io/badge/Bayesian%20Inference-✓-slateblue)
+![Logistic Regression](https://img.shields.io/badge/Logistic%20Regression-✓-green)
+
 **Author:** Ezau Faridh Torres Torres  
 **Advisor:** Dr. José Andrés Christen Gracia  
 **Course:** Scientific Computing for Probability, Statistics, and Data Science  
